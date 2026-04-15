@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema",
+  "vendor": "globalx",
+  "name": "freight-hub",
+  "version": "0.3.0",
+  "title": "Global X Freight Hub",
+  "description": "VTEX IO carrier integration hub for dynamic Braspress freight quoting using VTEX Catalog SKU dimensions.",
+  "credentialType": "absolute",
+  "builders": {
+    "node": "7.x"
+  },
+  "billingOptions": {
+    "type": "free",
+    "availableCountries": [
+      "BRA"
+    ],
+    "support": {
+      "email": "ti@globaltradebr.com.br",
+      "url": "https://gxintegra.iagx.com.br"
+    }
+  },
+  "settingsSchema": {
+    "title": "Global X Freight Hub Settings",
+    "type": "object",
+    "properties": {
+      "braspressEnabled": {
+        "title": "Enable Braspress",
+        "type": "boolean",
+        "default": true
+      },
+      "braspressUser": {
+        "title": "Braspress User",
+        "type": "string"
+      },
+      "braspressPassword": {
+        "title": "Braspress Password",
+        "type": "string"
+      },
+      "braspressCnpjRemetente": {
+        "title": "Braspress Remitter CNPJ",
+        "type": "string",
+        "default": "07610601000165"
+      },
+      "braspressCepOrigem": {
+        "title": "Braspress Origin ZIP Code",
+        "type": "string",
+        "default": "14874002"
+      },
+      "braspressDockName": {
+        "title": "Dock label",
+        "type": "string",
+        "default": "Doca Principal"
+      },
+      "braspressPolicyName": {
+        "title": "Checkout SLA display name",
+        "type": "string",
+        "default": "Braspress Transportes Urgentes"
+      },
+      "braspressModal": {
+        "title": "Braspress modal",
+        "type": "string",
+        "default": "R",
+        "enum": [
+          "R",
+          "A"
+        ]
+      },
+      "braspressTipoFrete": {
+        "title": "Braspress freight type",
+        "type": "string",
+        "default": "1",
+        "enum": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "braspressDefaultRecipientDocument": {
+        "title": "Optional default recipient document",
+        "type": "string",
+        "default": ""
+      },
+      "vtexCatalogAppKey": {
+        "title": "VTEX Catalog App Key",
+        "type": "string"
+      },
+      "vtexCatalogAppToken": {
+        "title": "VTEX Catalog App Token",
+        "type": "string"
+      },
+      "markupPercent": {
+        "title": "Optional markup percent",
+        "type": "number",
+        "default": 0
+      },
+      "minimumPrice": {
+        "title": "Optional minimum freight",
+        "type": "number",
+        "default": 0
+      },
+      "hideWhenProviderFails": {
+        "title": "Hide SLA if provider fails",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "required": [
+      "braspressUser",
+      "braspressPassword",
+      "braspressCnpjRemetente",
+      "braspressCepOrigem",
+      "vtexCatalogAppKey",
+      "vtexCatalogAppToken"
+    ]
+  },
+  "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.braspress.com",
+        "path": "/v1/cotacao/calcular/json"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "globalx.vtexcommercestable.com.br",
+        "path": "/api/catalog_system/pvt/sku/stockkeepingunitbyid/*"
+      }
+    },
+    {
+      "name": "ADMIN_DS"
+    }
+  ]
+}

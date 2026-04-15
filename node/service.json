@@ -1,0 +1,29 @@
+{
+  "memory": 512,
+  "timeout": 10,
+  "minReplicas": 1,
+  "maxReplicas": 2,
+  "ttl": 30,
+  "routes": {
+    "notification": {
+      "path": "/_v/notification",
+      "public": false,
+      "access": "authorized"
+    },
+    "tracking": {
+      "path": "/_v/tracking",
+      "public": false,
+      "access": "authorized"
+    },
+    "health": {
+      "path": "/_v/health",
+      "public": true,
+      "access": "public"
+    },
+    "quote": {
+      "path": "/_v/quote",
+      "public": true,
+      "access": "public"
+    }
+  }
+}
