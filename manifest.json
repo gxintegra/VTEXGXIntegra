@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema",
   "vendor": "globalx",
   "name": "freight-hub",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "title": "Global X Freight Hub",
   "description": "VTEX IO carrier integration hub for dynamic Braspress freight quoting using VTEX Catalog SKU dimensions.",
   "credentialType": "absolute",
