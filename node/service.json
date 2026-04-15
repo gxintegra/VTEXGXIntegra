@@ -16,7 +16,7 @@
       "access": "authorized"
     },
     "health": {
-      "path": "/_v/health",
+      "path": "/_v/freight-hub/health",
       "public": true,
       "access": "public"
     },
